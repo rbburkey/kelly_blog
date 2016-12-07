@@ -1,17 +1,107 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
+
+
+    <!-- Main Content -->
+    <%= form_for(@post) do |f| %>
+    <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |message| %>
+        <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                          <label>Title</label>
+                          <%= f.text_field :title, class: "form-control", :placeholder => "Give It a Title" %>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Subtitle</label>
+                            <%= f.text_field :subtitle, class: "form-control", :placeholder => "Give Us a Taste" %>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Photo</label>
+                            <%= f.file_field :image%>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Message</label>
+                            <%= f.text_area :body, class: "form-control", :placeholder => "Write something beautiful.", cols: "30", rows: "10" %>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <% if user_signed_in? %>
+                  <ul class="pager">
+                      <li>
+                            <%= f.submit class: "btn btn-default" %>
+                        </li>
+                      </ul>
+                      <% end %>
+                      <ul class="pager">
+                        <li>
+                          <%= link_to 'Back', root_url, class: "btn btn-default" %>
+                        </li>
+                      </ul>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%end%>
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">&copy; Boldly Told</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>

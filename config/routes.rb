@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts
 
+  devise_for :users
+  resources :posts
   root 'static#home'
 
-  get '/about' => 'static#about'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
