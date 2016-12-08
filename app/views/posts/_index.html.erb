@@ -10,7 +10,7 @@
         <h3 class="post-subtitle">
           <%= post.subtitle %>
         </h3>
-        <p class="post-meta">Posted on <%=Date.new%></p>
+        <p class="post-meta">Posted on <%=post.created_at.strftime("%B %-d, %Y")%></p>
         <hr>
         <br>
         <% end %>

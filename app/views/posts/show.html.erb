@@ -1,33 +1,30 @@
 
-  <%= render 'static/nav2' %>
+  <%= render 'layouts/nav2' %>
 <body>
   <!-- Page Header -->
   <!-- Set your background image for this header on the line below. -->
-  <header class="intro-header" style= "background-image: url('assets/panel_background.jpeg')">
+  <header class="intro-header" style= "background-image: url('<%=@post.image.url%>'); box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);">
+
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="post-heading">
             <h1><%=@post.title%></h1>
             <h2 class="subheading"><%=@post.subtitle%></h2>
-            <span class="meta">Posted on <%=Time.now%></span>
+            <span class="meta">Posted on <%=@post.created_at.strftime("%B %-d, %Y")%></span>
           </div>
         </div>
       </div>
     </div>
+
   </header>
 
   <!-- Post Content -->
   <article>
     <div class="container">
       <div class="row">
-        <div class = "post_image">
-          <p>
-            <%= image_tag @post.image.url(:large)%>
-          </p>
-        </div>
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <p class="post-subtitle"><%=@post.body%></p>
+          <p class="post-subtitle"><%=simple_format(@post.body)%></p>
         </div>
       </div>
     </div>
